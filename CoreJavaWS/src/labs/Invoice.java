@@ -13,6 +13,21 @@ ex: 120 1200 3000 400 5000
  * @author Shalini
  *
  */
+class Brand{
+	private int id;
+	private String brandname;
+	
+	public Brand() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Brand(int id, String brandname) {
+		super();
+		this.id = id;
+		this.brandname = brandname;
+	}
+	
+}
 public class Invoice {
 
 	public static void main(String[] args) {
@@ -22,6 +37,7 @@ public class Invoice {
 		int sum = 0;
 		for(int count=1; count<=5;count++) {
 			System.out.println("Enter amount for invoice "+count);
+			System.out.println();
 			int i1 = sc.nextInt();
 
 		}
