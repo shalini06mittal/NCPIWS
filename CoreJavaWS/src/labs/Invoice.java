@@ -1,48 +1,65 @@
 package labs;
 
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Scanner;
 
-/**
-take input amount of 5 invoices
-add all the invoices whose value is greater than 1000 
-and print the sum of these invoices 
-ex: 120 1200 3000 400 5000 
-1200+3000+5000 = 9200 
-
- * @author Shalini
- *
- */
-class Brand{
-	private int id;
-	private String brandname;
-	
-	public Brand() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Brand(int id, String brandname) {
-		super();
-		this.id = id;
-		this.brandname = brandname;
-	}
-	
-}
 public class Invoice {
 
-	public static void main(String[] args) {
-
-        
-		Scanner sc = new Scanner(System.in);
-		int sum = 0;
-		for(int count=1; count<=5;count++) {
-			System.out.println("Enter amount for invoice "+count);
-			System.out.println();
-			int i1 = sc.nextInt();
-
-		}
-		sc.close();
-
+	private int invno;
+	private String customername;
+	private double invamout;
+	private LocalDate orderdate;
+	private OrderStatus orderStatus;
+	private LineItem [] lineItems;
+	public Invoice() {
+		// TODO Auto-generated constructor stub
+		orderdate = LocalDate.now();
+		orderStatus = OrderStatus.ORDERED;
 	}
-
+	public Invoice(int invno, String customername, LineItem[] lineItems) {
+		super();
+		this.invno = invno;
+		this.customername = customername;
+		this.lineItems = lineItems;
+		this.orderStatus = OrderStatus.ORDERED;
+	}
+	public int getInvno() {
+		return invno;
+	}
+	public void setInvno(int invno) {
+		this.invno = invno;
+	}
+	public String getCustomername() {
+		return customername;
+	}
+	public void setCustomername(String customername) {
+		this.customername = customername;
+	}
+	public double getInvamout() {
+		return invamout;
+	}
+	public void setInvamout(double invamout) {
+		this.invamout = invamout;
+	}
+	public LineItem[] getLineItems() {
+		return lineItems;
+	}
+	public void setLineItems(LineItem[] lineItems) {
+		this.lineItems = lineItems;
+	}
+	public void caclculate() {
+		double total = 0;
+		for(LineItem item:lineItems) {
+			total += item.getQuantity() * item.getPrice();
+		}
+		invamout = total;
+	}
+	@Override
+	public String toString() {
+		return "Invoice [invno=" + invno + ", customername=" + customername + ", invamout=" + invamout + ", orderdate="
+				+ orderdate + ", orderStatus=" + orderStatus + ", lineItems=" + Arrays.toString(lineItems) + "]";
+	}
+	
+	
+	
 }
