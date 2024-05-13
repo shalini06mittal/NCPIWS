@@ -22,6 +22,7 @@ public class Invoice {
 		this.customername = customername;
 		this.lineItems = lineItems;
 		this.orderStatus = OrderStatus.ORDERED;
+		orderdate = LocalDate.now();
 	}
 	public int getInvno() {
 		return invno;
