@@ -7,9 +7,13 @@ public class ArrayDemo {
 		a = new int[10];
 		a[0] = 1;
 		
-		int b[] = new int[10];
+		int b[] = {1,2,3,4,5};
+		System.out.println(b);
+		int x[] = b;
 		
 		char c[] = {'a','e','i','o','u'}; 
+		System.out.println(c);
+		
 		
 		/**
 		 * st1[]
@@ -40,7 +44,16 @@ public class ArrayDemo {
 			}
 			System.out.println();
 		}
-
+		
+		// Print the average of each player
+		for (int i = 0; i < scores.length; i++) {
+			double sum = 0;
+			for (int j = 0; j < scores[i].length; j++) {
+				sum += scores[i][j];
+			}
+			double avg = sum/scores[i].length;
+			System.out.println("Average for player "+(i+1)+" "+avg);
+		}
 	}
 
 }
