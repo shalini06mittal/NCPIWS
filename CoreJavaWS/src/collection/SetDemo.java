@@ -4,6 +4,40 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+ interface Interface1 {
+
+	void method1(String str);
+	
+	default void log(String str){
+		System.out.println("I1 logging::"+str);
+	}
+}
+ interface Interface2 {
+
+		void method2();
+		
+		default void log(String str){
+			System.out.println("I2 logging::"+str);
+		}
+
+	}
+ 
+ class MyClass implements Interface1, Interface2 {
+
+		@Override
+		public void method2() {
+		}
+
+		@Override
+		public void method1(String str) {
+		}
+
+		@Override
+		public void log(String str){
+			System.out.println("MyClass logging::"+str);
+			Interface1.super.log("abc");
+		}
+	}
 public class SetDemo {
 
 	public static void main(String[] args) {
