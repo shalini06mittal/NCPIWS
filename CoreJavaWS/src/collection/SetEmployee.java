@@ -9,6 +9,9 @@ import java.util.TreeSet;
 public class SetEmployee {
 	
 	public static void main(String[] args) {
+		int n=1;
+		for(;n>0;n++);
+		System.out.println(n);
 		/**
 		 * Create a list of names
 		 * Create a map with name from list as key and value the
