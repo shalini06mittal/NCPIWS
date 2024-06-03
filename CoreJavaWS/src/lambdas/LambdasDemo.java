@@ -1,11 +1,19 @@
 package lambdas;
 
-public class LambdasDemo {
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
+public class LambdasDemo {
+	
+	
+
+	
 	public static void main(String[] args) {
-		if(true)
 		
-			System.out.println();
+		
 		
 		/**
 		 * ()->{
