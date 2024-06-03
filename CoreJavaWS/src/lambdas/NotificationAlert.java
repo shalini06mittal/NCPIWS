@@ -7,3 +7,11 @@ public interface NotificationAlert {
 	}
 }
 
+interface NotificationAlert1 {
+	public void notifyMessage(String name, String message);
+	
+}
+interface NotificationAlert2 {
+	public boolean notifyMessage(String message);
+	
+}
