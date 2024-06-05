@@ -1,10 +1,13 @@
 package lambdas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -88,6 +91,85 @@ public class TestStudent {
 //		printDetails(listofstudents, student -> 
 //						System.out.println(student.getName()+" "+student.getPercentage()));
 //		getNames(listofstudents, student -> student.getName());
+		System.out.println();
+		for(Student s:listofstudents.stream().sorted(
+				Comparator.comparing(Student::getSpecialization).thenComparing(Student::getName))
+		.collect(Collectors.toList()))
+			System.out.println(s.getSpecialization()+" "+s.getName());
+		//Collectors.groupingBy(Student::getSpecialization, Collectors.counting()))
+			//	);
+		
+		User user1 = new User(1, "Shalini", "Pune"); 
+	  	User user2 = new User(2, "Siya", "Mumbai"); 
+	 	User user3 = new User(3, "Asha", "Nagpur");
+	 	User user4 = new User(4, "Akhil", "Pune"); 
+	 	User user5 = new User(5, "Nikhil", "Mumbai");
+	 	System.out.println();
+	 	List<User> users= Arrays.asList(user1, user2, user3, user4, user5);
+	 	List<User> sorteduserwithcity =users.stream()
+	 			.sorted(Comparator.comparing(User::getCity))
+	 			.collect(Collectors.toList()); 
+	 	for(User user:sorteduserwithcity)
+	 		System.out.println(user);
+	 	;
+	 	System.out.println();
+	 	List<User> sorteduserwithcityandname =users.stream()
+	 			.sorted(
+	 					Comparator.comparing(User::getCity)
+	 					.thenComparing(user -> user.getName()))
+	 			.collect(Collectors.toList()); 
+	 	for(User user:sorteduserwithcityandname)
+	 		System.out.println(user);
+	 	;
+	 	
+
 	}
+	
 
 }
+
+class User { 
+    private int userId; 
+    private String name; 
+    private String city;
+// getter, setter etc..
+	public User(int userId, String name, String city) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.city = city;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + name + ", city=" + city + "]";
+	}
+    
+    
+	
+}
+
