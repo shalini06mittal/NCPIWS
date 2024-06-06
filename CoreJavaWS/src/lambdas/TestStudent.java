@@ -3,7 +3,10 @@ package lambdas;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
@@ -136,57 +139,46 @@ public class TestStudent {
 		//	 		System.out.println(user);
 		//	 	;
 
-
-		//	 	System.out.println();
-		//	 	Arrays.asList(1,2,3,4,5)
-		//	 	.stream().flatMap(n->{
-		//	 		
-		//	 		return Arrays.asList(n-1,n,n+1).stream();
-		//	 	})
-		//	 	.forEach(System.out::println);
-
-
-		String[][] array = new String[][]{{"a", "b"}, {"c", "d"}, {"e", "f"},{"x","a"}};
-
-		// array to a stream
-		Stream<String[]> stream1 = Arrays.stream(array);
-
-		new IntFunction<String[]>() {
-
-			@Override
-			public String[] apply(int value) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
-
+//		List list = new ArrayList<>();
+//		list.add(10);
+//		list.add("hey");
+//		list.add(23.4);
+//		
+//		List list1 = new ArrayList<>();
+//		list1.add(list);
 		
-		String[] result = Stream.of(array)  // Stream<String[]>
-		          .flatMap(data -> Stream.of(data))        // Stream<String>
-		         // .toArray(String[]::new);    // [a, b, c, d, e, f]
-		          .toArray(s-> {
-		        	  System.out.println(s);
-		        	  return new String[s];  
-		          });
-		  for (String s : result) 
-		      System.out.println(s);
-
-		  
-		// x is a String[]
-//		List<String[]> result = stream1
-//				.filter(x -> {
-//					for(String s : x){      // really?
-//						System.out.println("filter "+s);
-//						if(s.equals("a")){
-//							return false;
-//						}
-//					}
-//					return true;
-//				}).collect(Collectors.toList());
-//
-//		// print array
-//		result.forEach(x -> System.out.println(Arrays.toString(x)));
-
+		List<Integer> amount = Arrays.asList(20,40,60,80,100);
+		int sum = amount.get(0);
+//		for(Integer ob:amount)
+//			sum+=ob;
+		
+		for(int i=1;i<amount.size();i++)
+			sum+=amount.get(i);
+		System.out.println(sum);
+		
+		
+//		Optional<String> s = Optional.empty();
+//		if(s.isPresent())
+//		System.out.println(s.get().toLowerCase());
+//		
+		System.out.println();
+		int res = amount.stream()
+		.reduce((t, u)-> t+u).get();
+	
+		
+		System.out.println(res);
+		System.out.println();
+		res = amount.stream()
+				.reduce(0, new BinaryOperator<Integer>() {
+					
+					@Override
+					public Integer apply(Integer t, Integer u) {
+						System.out.println(t+" "+u);
+						return t+u;
+					}
+				});
+				System.out.println(res);
+			 	
 	}
 
 
