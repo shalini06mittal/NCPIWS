@@ -178,6 +178,29 @@ public class TestStudent {
 					}
 				});
 				System.out.println(res);
+				
+			Integer [][]n = {{1,2},{3,4}};
+			
+			System.out.println(Arrays.stream(n)
+			
+			.map(d -> Stream.of(d))
+			.map(d -> d.collect(Collectors.toList())));
+			System.out.println();
+			
+			System.out.println(Arrays.stream(n)
+			.flatMap(d -> Arrays.stream(d))
+			.collect(Collectors.toList()));
+			
+			System.out.println();
+			String[][] array = new String[][]{{"a", "b"}, {"c", "d"}, {"e", "f"}};
+			
+					Stream.of(array)  // Stream<String[]>
+			          .flatMap(d->Stream.of(d))  
+			          .forEach(d->System.out.println(d));
+			          
+
+			
+			
 			 	
 	}
 

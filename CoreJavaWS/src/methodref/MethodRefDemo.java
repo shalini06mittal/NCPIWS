@@ -40,12 +40,14 @@ public class MethodRefDemo {
 		
 		// instance method with an object of a class
 		Person p1 = new Person("a", "b");
-		Person p2 = new Person("c", "d");
-		p1.followed(p2);
+		Person p22 = new Person("c", "d");
+		p1.followed(p22);
 		
-		//Consumer<Person> f = p -> p.followed(p2);
-		Consumer<Person> f = p1::followed;
-		f.accept(p2);
+		Consumer<Person> f1 = p2 -> p22.followed(p2);
+		f1.accept(p22);
+		System.out.println();
+		Consumer<Person> f = p22::followed;
+		f.accept(p1);
 		
 	}
 
